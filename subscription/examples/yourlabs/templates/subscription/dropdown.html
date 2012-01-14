@@ -3,7 +3,7 @@
 
 <div class="toggler">
     {{ dropdown }}:
-    <div class="counter">
+    <div class="counter" {% if counter == 0 %}style="display:none"{% endif %}>
         {{ counter }}
     </div>
 </div>

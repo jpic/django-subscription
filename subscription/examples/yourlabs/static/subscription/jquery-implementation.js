@@ -22,6 +22,7 @@ Subscription = function(json_url, push_url, override) {
                             'dropdown': dropdown_name,
                         });
                     }
+                    counter.hide();
                 }
             });
             $('.subscription .dropdown').hover(function() {
@@ -69,9 +70,11 @@ Subscription = function(json_url, push_url, override) {
         },
         'update_counts': function() {
             $('.subscription .dropdown.outer').each(function() {
+                var counter = $(this).find('.counter');
                 var s = Subscription.singleton;
-                var c = parseInt($(this).find('.counter').html());
+                var c = parseInt(counter.html());
                 s.counts[s.get_dropdown_name($(this))] = c;
+                c > 0 ? counter.fadeIn() : counter.fadeOut();
             });
         },
     }, override);
